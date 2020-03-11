@@ -1,0 +1,26 @@
+{
+  "name": "fire-detection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alikil/FIre-detection.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alikil/FIre-detection/issues"
+  },
+  "homepage": "https://github.com/alikil/FIre-detection#readme",
+  "dependencies": {
+    "@tensorflow/tfjs": "^1.7.0",
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3"
+  }
+}
