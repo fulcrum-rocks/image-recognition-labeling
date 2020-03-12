@@ -1,6 +1,6 @@
 import { spawn } from "child_process";
 
-async function pythonShell(script: string, data: JSON | Object) {
+async function pythonShell(script: string, data: JSON | Object): Promise<JSON> {
   const pythonProcess = spawn("python", [
     `${__dirname}\\${script}`,
     JSON.stringify(data)
