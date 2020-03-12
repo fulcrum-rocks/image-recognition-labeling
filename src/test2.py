@@ -1,7 +1,6 @@
 import sys
 import json
-
-data = {"a": 1, "b": 2}
+data = json.loads(sys.argv[1])
 
 print(json.dumps(data, ensure_ascii=False))
 sys.stdout.flush()
