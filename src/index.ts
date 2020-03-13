@@ -1,29 +1,16 @@
-import { spawn } from "child_process";
+const { getDataFilePath, drawBlueRect } = require("opencv4nodejs");
 
-async function pythonShell(script: string, data: JSON | Object): Promise<JSON> {
-  const pythonProcess = spawn("python", [
-    `${__dirname}\\${script}`,
-    JSON.stringify(data)
-  ]);
-  return await new Promise((res, rej) => {
-    const stdout = [];
-    const stderr = [];
-    pythonProcess.stdout.on("data", data => stdout.push(data.toString()));
-    pythonProcess.stderr.on("data", data => stderr.push(data.toString()));
-    pythonProcess.on("close", code => {
-      if (code !== 0) {
-        const errorMessage = stderr.join("");
-        rej(errorMessage);
-      } else {
-        const pythonResult = JSON.parse(stdout.join(""));
-        res(pythonResult);
-      }
-    });
-  });
-}
+import * as cv from "opencv4nodejs";
+import { DetectionModelTrainer } from "./Training";
 
-async function init() {
-  const aaa = await pythonShell("test2.py", { a: 1, b: 2 });
-  console.log(aaa);
+async function train_detection_model() {
+  let trainer = new DetectionModelTrainer();
+  await trainer.setModelTypeAsYOLOv3(); // __model_type: 'yolov3'
+  await trainer.setDataDirectory("fire-dataset"); // __train_images_folder...etc
+  await trainer.setTrainConfig(["fire"], 8, 100, "pretrained-yolov3.h5");
+  console.log(trainer);
+  // console.log(trainer);
+
+  // trainer.trainModel()
 }
-init();
+train_detection_model();
