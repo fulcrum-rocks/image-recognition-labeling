@@ -1,40 +1,43 @@
 {
-  "name": "fire-detection",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "ts-node src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alikil/FIre-detection.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alikil/FIre-detection/issues"
-  },
-  "homepage": "https://github.com/alikil/FIre-detection#readme",
-  "dependencies": {
-    "@tensorflow/tfjs": "^1.7.0",
-    "@tensorflow/tfjs-node": "^1.7.0",
-    "elementtree": "^0.1.7",
-    "keras-js": "^1.0.3",
-    "node-kmeans": "^1.1.9",
-    "node-pickle": "0.0.2",
-    "nodemon": "^2.0.2",
-    "opencv4nodejs": "^5.5.0",
-    "pickle": "^0.2.0",
-    "python-shell": "^1.0.8",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.8.3",
-    "xml-js": "^1.6.11",
-    "xml2js": "^0.4.23"
-  },
-  "devDependencies": {
-    "@types/elementtree": "^0.1.0",
-    "@types/xml2js": "^0.4.5"
-  }
+	"name": "fire-detection",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "ts-node src/index.ts",
+		"detect": "ts-node src/Detect.ts",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/alikil/FIre-detection.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/alikil/FIre-detection/issues"
+	},
+	"homepage": "https://github.com/alikil/FIre-detection#readme",
+	"dependencies": {
+		"@tensorflow/tfjs": "^1.7.0",
+		"@tensorflow/tfjs-node": "^1.7.0",
+		"elementtree": "^0.1.7",
+		"keras-js": "^1.0.3",
+		"node-kmeans": "^1.1.9",
+		"node-pickle": "0.0.2",
+		"nodemon": "^2.0.2",
+		"numjs": "^0.16.0",
+		"opencv4nodejs": "^5.5.0",
+		"pickle": "^0.2.0",
+		"python-shell": "^1.0.8",
+		"ts-node": "^8.6.2",
+		"typescript": "^3.8.3",
+		"xml-js": "^1.6.11",
+		"xml2js": "^0.4.23"
+	},
+	"devDependencies": {
+		"@types/elementtree": "^0.1.0",
+		"@types/numjs": "^0.14.4",
+		"@types/xml2js": "^0.4.5"
+	}
 }
