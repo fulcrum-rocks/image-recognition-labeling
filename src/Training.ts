@@ -4,8 +4,6 @@ import { generateAnchors } from "./utils/anchors";
 import { IInitTrainer, IFoldersPath } from "./interfacess/trainer";
 import { parse_voc_annotation } from "./utils/voc";
 import * as tf from "@tensorflow/tfjs-node";
-import { max } from "@tensorflow/tfjs-node";
-import { pythonShell } from "./node2Python";
 
 export class DetectionModelTrainer implements IInitTrainer {
 	__train_images_folder: string;
@@ -154,7 +152,7 @@ export class DetectionModelTrainer implements IInitTrainer {
 		object_names_array: string[],
 		batch_size: number,
 		num_experiments: number,
-		train_from_pretrained_model: string
+		train_from_pretrained_model?: string
 	) {
 		batch_size = batch_size || 4;
 		num_experiments = num_experiments || 100;

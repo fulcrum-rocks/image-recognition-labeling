@@ -1,5 +1,4 @@
 import { DetectionModelTrainer } from "./Training";
-import { IInitTrainer } from "./interfacess/trainer";
 
 async function train_detection_model() {
 	let trainer = new DetectionModelTrainer();
