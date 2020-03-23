@@ -1,6 +1,8 @@
 import { parse_voc_annotation } from "./voc";
 import * as tf from "@tensorflow/tfjs-node";
 import { k_means } from "./k_mean";
+import { parse_voc_annotation_supervice_JSON } from "./voc_JSON_supervise";
+import { parse_voc_annotation_labelbox_JSON } from "./voc_JSON_labelbox";
 export async function generateAnchors(
 	train_annotation_folder: string,
 	train_image_folder: string,
@@ -12,7 +14,7 @@ export async function generateAnchors(
 	);
 	const num_anchors = 9;
 
-	const annotations = parse_voc_annotation(
+	const annotations = parse_voc_annotation_labelbox_JSON(
 		train_annotation_folder,
 		train_image_folder,
 		train_cache_file,
@@ -51,7 +53,6 @@ export async function generateAnchors(
 		.map(i => i.index);
 
 	const anchor_array = [];
-	let reverse_anchor_array = [];
 	let out_string = "";
 
 	for (let i = 0; i < sorted_indices.length; i++) {
@@ -64,31 +65,9 @@ export async function generateAnchors(
 			", ";
 	}
 
-	let block1 = [];
-	block1.push(anchor_array[12]);
-	block1.push(anchor_array[13]);
-	block1.push(anchor_array[14]);
-	block1.push(anchor_array[15]);
-	block1.push(anchor_array[16]);
-	block1.push(anchor_array[17]);
+	const reverse_anchor_array = anchor_array;
 
-	let block2 = [];
-	block2.push(anchor_array[6]);
-	block2.push(anchor_array[7]);
-	block2.push(anchor_array[8]);
-	block2.push(anchor_array[9]);
-	block2.push(anchor_array[10]);
-	block2.push(anchor_array[11]);
-
-	let block3 = [];
-	block3.push(anchor_array[0]);
-	block3.push(anchor_array[1]);
-	block3.push(anchor_array[2]);
-	block3.push(anchor_array[3]);
-	block3.push(anchor_array[4]);
-	block3.push(anchor_array[5]);
-
-	reverse_anchor_array.push(block1, block2, block3);
+	console.log(reverse_anchor_array);
 
 	("Anchor Boxes generated.");
 	return { anchor_array, reverse_anchor_array };
