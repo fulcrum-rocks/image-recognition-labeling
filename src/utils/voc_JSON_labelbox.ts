@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import * as cv from "opencv4nodejs";
 
 export function parse_voc_annotation_labelbox_JSON(
 	ann_dir: string,
@@ -8,8 +9,8 @@ export function parse_voc_annotation_labelbox_JSON(
 ) {
 	let all_insts = [];
 	let seen_labels: {} = {};
-	const exist = fs.existsSync(cache_name);
-
+	let exist = fs.existsSync(cache_name);
+	exist = null;
 	// ===================== Cache exist ===============
 	if (exist) {
 		const handle = fs.readFileSync(cache_name).toString();
@@ -23,18 +24,22 @@ export function parse_voc_annotation_labelbox_JSON(
 		const JsonData = JSON.parse(data);
 
 		JsonData.forEach(ann => {
+			console.log(`${img_dir}\\${ann["External ID"]}`);
+			const image = cv.imread(`${img_dir}\\${ann["External ID"]}`);
+			const size = image.sizes;
+			console.log(size);
+
 			// ===================== Img =================
 			const img = {};
 			img["filename"] = `${ann["External ID"]}`;
-			img["height"] = 720;
-			img["width"] = 1280;
+			img["height"] = size[0];
+			img["width"] = size[1];
 			const path = `${ann_dir}\\${img["filename"]}`;
 
 			// ====================== Object ===============
 			ann.Label.mask.forEach(object => {
 				const obj = {};
-				const name = Object.keys(object)[0];
-				obj["name"] = name;
+				obj["name"] = "mask";
 				// ================= Image count ================
 				if (obj["name"] in seen_labels) {
 					seen_labels[obj["name"]] += 1;
@@ -54,6 +59,8 @@ export function parse_voc_annotation_labelbox_JSON(
 				obj["xmax"] = [Math.max(...xArr)];
 				obj["ymax"] = [Math.max(...yArr)];
 
+				console.log(ann["External ID"]);
+
 				// ================= Push object to image ===============
 				if (labels.length > 0 && !labels.includes(obj["name"])) {
 				} else {
@@ -64,10 +71,10 @@ export function parse_voc_annotation_labelbox_JSON(
 					}
 				}
 			});
+
 			if (img["object"].length > 0) {
 				all_insts.push(img);
 			}
-
 			Save_VOC_models(img, path, ann_dir);
 		});
 
@@ -134,26 +141,28 @@ export const Save_VOC_models = (img, _path, ann_dir) => {
 	segmented = subElement(annotation, "segmented");
 	segmented.text = "0";
 
-	img.object.forEach(_object => {
-		object = subElement(annotation, "object");
-		name = subElement(object, "name");
-		name.text = _object.name;
-		pose = subElement(object, "pose");
-		pose.text = _object.pose ? _object.pose : "Unspecified";
-		truncated = subElement(object, "truncated");
-		truncated.text = _object.truncated ? _object.truncated : "0";
-		difficult = subElement(object, "difficult");
-		difficult.text = _object.difficult ? _object.difficult : "0";
-		bndbox = subElement(object, "bndbox");
-		xmin = subElement(bndbox, "xmin");
-		xmin.text = _object.xmin;
-		ymin = subElement(bndbox, "ymin");
-		ymin.text = _object.ymin;
-		xmax = subElement(bndbox, "xmax");
-		xmax.text = _object.xmax;
-		ymax = subElement(bndbox, "ymax");
-		ymax.text = _object.ymax;
-	});
+	if (img.object) {
+		img.object.forEach(_object => {
+			object = subElement(annotation, "object");
+			name = subElement(object, "name");
+			name.text = _object.name;
+			pose = subElement(object, "pose");
+			pose.text = _object.pose ? _object.pose : "Unspecified";
+			truncated = subElement(object, "truncated");
+			truncated.text = _object.truncated ? _object.truncated : "0";
+			difficult = subElement(object, "difficult");
+			difficult.text = _object.difficult ? _object.difficult : "0";
+			bndbox = subElement(object, "bndbox");
+			xmin = subElement(bndbox, "xmin");
+			xmin.text = _object.xmin;
+			ymin = subElement(bndbox, "ymin");
+			ymin.text = _object.ymin;
+			xmax = subElement(bndbox, "xmax");
+			xmax.text = _object.xmax;
+			ymax = subElement(bndbox, "ymax");
+			ymax.text = _object.ymax;
+		});
+	}
 
 	const etree = new ElementTree(annotation);
 	const xml = etree.write({ xml_declaration: false });
