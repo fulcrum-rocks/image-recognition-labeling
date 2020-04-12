@@ -20,6 +20,7 @@
   "dependencies": {
     "@tensorflow/tfjs": "^1.7.0",
     "@tensorflow/tfjs-node": "^1.7.0",
+    "dotenv": "^8.2.0",
     "elementtree": "^0.1.7",
     "jpickle": "^0.4.1",
     "keras-js": "^1.0.3",
