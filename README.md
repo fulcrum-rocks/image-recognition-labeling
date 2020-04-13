@@ -5,7 +5,7 @@ How to Create Neural Network for Recognizing Masks
 Create annotation boxes to pictures
 Generate anchors for image recognition
 
-![](images/image.png)
+![](images/neural-network-2)
 
 Supports:
 
