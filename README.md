@@ -2,6 +2,8 @@
 
 How to Create Neural Network for Recognizing Masks
 
+https://blog.fulcrum.rocks/neural-network-image-recognition
+
 Create annotation boxes to pictures
 Generate anchors for image recognition
 
