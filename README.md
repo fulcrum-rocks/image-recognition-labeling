@@ -57,6 +57,23 @@ Copy dataset folder to second project for training
 
 Use Anchors from console or from json/detection_config as anchor for second project.
 
-## Dataset Structure:
+## Contact company
 
-<p>src/</br><img src="images/dataset.png" width="150" alt="Nest Logo" /></p>
+-   **Fulcrum**
+    -   _Email:_ [hello@fulcrum.rocks](mailto:hello@fulcrum.rocks?subject=[GitHub]%20Mask%20recognition)
+    -   _Website:_ [fulcrum.rocks](https://fulcrum.rocks/)
+    -   _Blog_:\_ [blog.fulcrum.rocks](https://blog.fulcrum.rocks/neural-network-image-recognition)
+
+## Contact developer
+
+-   **Serhii Kalachnikov**
+    -   _Email:_ [serhii@fulcrum.rocks](mailto:serhii@fulcrum.rocks?subject=[GitHub]%20Mask%20recognition)
+    -   _Linkedin:_ [Serhii Kalachnikov](https://www.linkedin.com/in/serhii-kalachnikov-1383ba89/)
+
+## Contributors
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[MIT License](LICENSE)
