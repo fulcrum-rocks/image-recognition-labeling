@@ -62,7 +62,7 @@ Use Anchors from console or from json/detection_config as anchor for second proj
 -   **Fulcrum**
     -   _Email:_ [hello@fulcrum.rocks](mailto:hello@fulcrum.rocks?subject=[GitHub]%20Mask%20recognition)
     -   _Website:_ [fulcrum.rocks](https://fulcrum.rocks/)
-    -   _Blog_:\_ [blog.fulcrum.rocks](https://blog.fulcrum.rocks/neural-network-image-recognition)
+    -   _Blog:_ [blog.fulcrum.rocks](https://blog.fulcrum.rocks/neural-network-image-recognition)
 
 ## Contact developer
 
